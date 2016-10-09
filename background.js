@@ -23,10 +23,6 @@ chrome.webNavigation.onCompleted.addListener(function(details) { // sends messag
                     score += response.count();
                 });
             });
-            numClicksLeft--;
-            if(numClicksLeft <= 0) {
-                
-            }
     }
 
     // //if(detail.frameId === 0) {
@@ -56,11 +52,7 @@ chrome.webNavigation.onCompleted.addListener(function(details) { // sends messag
 
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
-    if(request.greeting == "setWord") {
-        word = greeting.word;
-        running = true;
-        log("Word set");
-    }
+    score += request.count;
 });
 
 
