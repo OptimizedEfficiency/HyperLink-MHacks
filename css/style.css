@@ -1,0 +1,73 @@
+<style>
+
+@font-face {
+
+    font-family: "xkcd";
+
+    src: url("../fonts/xkcd.otf") format("opentype");
+
+}
+
+body {
+    color: black;
+    background-color: #E6E6E6;
+}
+
+.title {
+
+    width: 100%;
+
+    text-align: center;
+
+    margin-bottom: 20px;
+
+}
+
+body, h1, h3, button, .btn {
+
+    word-spacing: 2px;
+
+    margin-bottom: 5px;
+
+}
+
+textarea  {
+    height: 30px;
+    width: 90%;
+    text-align: center;
+    background-color: #BDBDBD;
+}
+
+p {
+
+    font-size: 16px;
+
+}
+
+#options {
+
+    margin-top: 100px
+
+}
+
+
+.btn {
+
+    text-align: center;
+    background-color: #BDBDBD;
+    margin: 0 auto;
+
+}
+
+.ginp {
+
+    margin-top: 10px;
+
+}
+
+.headings {
+
+    text-align: center;
+
+}
+</style>

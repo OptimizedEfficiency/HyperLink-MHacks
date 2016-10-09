@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	<script src="popup.js"></script>
+</head>
+<body style="width: 300px; height: 400px">
+
+	<div id="start">
+		<center>
+			<h1>ClickCount</h1>
+			<p>Instructions:</p>
+			<p>Lorum Ipsum blah blah blah Lorum Ipsum blah blah blah blah blah blah Lorum Ipsum blah blah blah Lorum Ipsum blah blah blah</p>
+			<textarea>Put number of clicks here</textarea>
+			<br><br>
+			<textarea>Put word here</textarea>
+			<br><br>
+			<button class="btn btn-default" id="random">Random word</button>
+			<button class="btn btn-default" id="newGame" onclick="sendStartInfo()">New Game</button>
+		</center>
+	</div>
+
+
+	<div id="end" class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<h2>
+					Congratulations!
+				</h2>
+				<p>
+					Score: <bold id = score></bold>
+				</p>
+				<p>
+					Clicks: <bold id = clicks></bold>
+				</p>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>
+
