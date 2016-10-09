@@ -8,7 +8,7 @@
 			"matches": [
 				"<all_urls>"
 			],
-			"js": ["jquery-3.1.1.min.js", "content.js"]
+			"js": ["jquery-3.1.1.min.js", "content.js", "popup.js"]
 		}
 	],
   "browser_action": {
@@ -18,5 +18,6 @@
 	"permissions": [ "webNavigation", "activeTab", "*://*/*" ],
 	"background": {
   		"scripts": ["background.js"]
-	}
+	},
+	"content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }

@@ -5,7 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
-	<script src="popup.js"></script>
+	<!-- <script type="text/javascript" src="popup.js"></script> -->
 </head>
 <body style="width: 300px; height: 400px">
 
@@ -20,6 +20,14 @@
 			<br><br>
 			<button class="btn btn-default" id="random">Random word</button>
 			<button class="btn btn-default" id="newGame" onclick="sendStartInfo()">New Game</button>
+			<script> 
+			console.log("ran");
+				document.findElementById("newGame").innerHTML = "DONE";
+				function sendStartInfo() {
+				chrome.extension.sendMessage({greeting: "startInfo", word: document.getElementById().innerHTML.trim()});
+				
+				}
+			</script>
 		</center>
 	</div>
 

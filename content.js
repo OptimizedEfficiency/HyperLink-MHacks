@@ -1,11 +1,24 @@
 
-chrome.runtime.onMessage.addListener(
+chrome.runtime.onMessage.addListener( // Receive messages from backend
   function(request, sender, sendResponse) {
-    console.log(request);
+    // console.log("request Received from background : ");
+    // console.log(request);
+
+
+    // request for number of a word on the page
     if(request.greeting == "reportNumWords") {
-      chrome.runtime.sendMessage({count: getCount("LaunchPad")}, function(response) {
-        console.log(response);
-      });
+      chrome.runtime.sendMessage({count: getCount("image")}, function(response) {
+        // console.log(response);
+      }); 
+    }
+
+    if(request.greeting == "start") {
+      start();
+    }
+
+    //request to log a value
+    if(request.greeting == "log") {
+      console.log(request.message);
     }
   });
 
@@ -14,7 +27,7 @@ function getCount(str) {
   var markup = document.body.outerHTML;
 
   ["script", "style"].forEach(function(tag) {
-    console.log(tag);
+    // console.log(tag);
     while(markup.indexOf("<" + tag) >= 0) {
       var start = markup.indexOf("<" + tag);
       var end = markup.indexOf("</" + tag + ">") + ("</" + tag + ">").length;
@@ -29,10 +42,19 @@ function getCount(str) {
 
   markup = markup.toLowerCase();
 
-  console.log(markup);
+  // console.log(markup);
 
   return markup.split(str.toLowerCase()).length - 1;
 
+}
+
+function start() {
+  console.log("in start");
+    var person = prompt("Enter a word", "Hello");
+    if (person != null) {
+      console.log("sending");
+        chrome.runtime.sendMessage({"greeting":"setWord", "word": person});
+    }
 }
 
 // // content.js
