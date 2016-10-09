@@ -7,7 +7,8 @@ chrome.runtime.onMessage.addListener( // Receive messages from backend
 
     // request for number of a word on the page
     if(request.greeting == "reportNumWords") {
-      chrome.runtime.sendMessage({count: getCount("image")}, function(response) {
+      alert("Your score right now is " + request.score);
+      chrome.runtime.sendMessage({count: getCount("hello")}, function(response) {
         // console.log(response);
       }); 
     }

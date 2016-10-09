@@ -16,28 +16,42 @@ var word = "";
 
 chrome.webNavigation.onCompleted.addListener(function(details) { // sends message to page as soon as it loads
 
-    if(detail.frameId === 0) {
-        log("word = " + word);
-        if(running && details.frameId === 0) {
-            log("score: " + score);
-            log("running: " + running);
-            log("numClicksLeft: " + numClicksLeft);
-
+    if(details.frameId === 0) {
             chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
                 var activeTab = tabs[0];
-                chrome.tabs.sendMessage(activeTab.id, {"greeting": "reportNumWords", "word": word});
+                chrome.tabs.sendMessage(activeTab.id, {"greeting": "reportNumWords", "word": "hello", "score" :score}, function(response) {
+                    score += response.count();
+                });
             });
             numClicksLeft--;
             if(numClicksLeft <= 0) {
-                running = false;
+                
             }
-        } else {
-            chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-                var activeTab = tabs[0];
-                chrome.tabs.sendMessage(activeTab.id, {"greeting": "start"});
-            });
-        }
     }
+
+    // //if(detail.frameId === 0) {
+    //     // log("word = " + word);
+    //     if(running && details.frameId === 0) {
+    //         log("score: " + score);
+    //         log("running: " + running);
+    //         log("numClicksLeft: " + numClicksLeft);
+
+    //         chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    //             var activeTab = tabs[0];
+    //             chrome.tabs.sendMessage(activeTab.id, {"greeting": "reportNumWords", "word": word});
+    //         });
+    //         numClicksLeft--;
+    //         if(numClicksLeft <= 0) {
+    //             running = false;
+    //         }
+    //     } else {
+    //         log("queing");
+    //         chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    //             var activeTab = tabs[0];
+    //             chrome.tabs.sendMessage(activeTab.id, {"greeting": "start"});
+    //         });
+    //     }
+    // //}
 });
 
 chrome.runtime.onMessage.addListener(
